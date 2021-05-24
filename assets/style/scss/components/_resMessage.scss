@@ -6,6 +6,7 @@
     min-width: 150px;
     opacity: 0;
     transition: all linear 300ms;
+    z-index: 1061;
 
     &.active {
         opacity: 1;

@@ -14,21 +14,22 @@
     <div id="app">
         <div class="container my-5">
             <div class="row justify-content-center align-items-center ">
-                <div class="col-md-11 col-lg-8 px-0 px-md-5 pb-3">
+                <div class="col-md-11 col-lg-10 col-xl-9 pb-3">
                     <div class="d-flex justify-content-between mb-3">
                         <h1 class="h5 font-weight-normal fw-bold text-light  d-flex align-items-center"><span
                                 class="material-icons">
                                 admin_panel_settings
                             </span>Admin</h1>
                         <button
-                            class="btn btn-outline-light btn-sm rounded-pill font-size-sm d-inline-flex align-items-center"
+                            class="btn btn-outline-light btn-sm rounded-pill font-size-md d-inline-flex align-items-center"
                             @click="openModal('create')">
-                            <span class="material-icons font-size-sm">
+                            <span class="material-icons font-size-md">
                                 add
                             </span>建立產品
                         </button>
                     </div>
-                    <table class="adminTable table bg-white shadow-sm">
+                    <div class="adminTable">
+                    <table class="table bg-white shadow-sm">
                         <thead class="bg-primary-light text-white">
                             <tr>
                                 <th width="10%">
@@ -49,7 +50,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="font-size-sm align-middle">
+                        <tbody class="font-size-md align-middle">
                             <tr v-for="item in productsData" :key="item.id">
                                 <td>{{item.category}}</td>
                                 <td>{{item.title}}</td>
@@ -74,6 +75,7 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
                     <p class="text-light text-center" v-if="productsData.length === 0">目前尚未有商品</p>
                 </div>
             </div>
@@ -224,7 +226,7 @@
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body font-size-md">
                         是否刪除
                         <strong class="text-primary">{{productObj.title}}</strong> 商品(刪除後將無法恢復)。
                     </div>
@@ -346,6 +348,7 @@
                                     // 顯示訊息
                                     this.resMessage(res.data.message);
                                     this.getProductsData();
+                                    myProductModal.hide();
                                 } else {
                                     // 顯示訊息
                                     this.resMessage(res.data.message);
@@ -363,15 +366,15 @@
                                     // 顯示訊息
                                     this.resMessage(res.data.message);
                                     this.getProductsData();
+                                    myProductModal.hide();
                                 } else {
                                     // 顯示訊息
-                                    this.resMessage(res.data.message);
+                                    this.resMessage('欄位未填完成');
                                 }
                             }).catch((error) => {
                                 console.log(error);
                             });
                     }
-                    myProductModal.hide();
                 },
                 addImage() {
                     // productObj 內沒有 imagesUrl 則給予空陣列

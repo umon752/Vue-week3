@@ -23,12 +23,4 @@ input,textarea {
     &:focus {
         outline: none;
     }
-
-    &:-internal-autofill-selected {
-        background-color: transparent !important;
-    }
 }
-
-// td {
-//     padding: 4px auto 4px auto !important;
-// }
