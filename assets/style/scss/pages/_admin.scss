@@ -1,0 +1,15 @@
+.adminBtn  {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminTable {
+    min-width: 600px;
+    overflow-x: scroll;
+    @include media-breakpoint-up(sm) {
+        overflow-x: hidden;
+    }
+}
