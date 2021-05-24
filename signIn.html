@@ -59,8 +59,8 @@
             </div>
         </div>
 
-        <div class="resMessage alert alert-light shadow rounded-pill fw-bold text-secondary text-center" role="alert" :class="{active: isShowReaMessage}">
-            {{ resMessage }}
+        <div class="resMessage alert alert-light shadow rounded-pill fw-bold text-secondary text-center" role="alert" :class="{active: resObj.isShowReaMessage}">
+            {{ resObj.resMessage }}
         </div>
     </div>
 
@@ -82,8 +82,10 @@
                         token: '',
                         expired:'',
                     },
-                    resMessage: '',
-                    isShowReaMessage: false
+                    resObj: {
+                        resMessage: '',
+                        isShowReaMessage: false
+                    }
                 };
             },
             methods: {
@@ -111,11 +113,7 @@
                                 document.cookie = `hexToken=${this.cookie.token}; expires=${new Date(this.cookie.expired)}`;
                             } else {
                                 // 顯示訊息
-                                this.isShowReaMessage = true;
-                                setTimeout(() => {
-                                    this.isShowReaMessage = false;
-                                },1000);
-                                this.resMessage = res.data.message;
+                                this.resMessage(res.data.message);
                             }
                             // 清除 input 內容
                             this.userObj.username = '';
